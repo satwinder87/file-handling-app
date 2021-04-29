@@ -1,0 +1,23 @@
+# Health check
+curl -X GET http://localhost:8102/demo/actuator/health
+
+# To upload files, change the file location and fileCategory if needed
+curl -H "Content-Type: multipart/form-data" -X POST -F "file=@/c/Users/sasi12/Downloads/download.doc" -F fileCategory=Finance -F fileCategory=Contracts -F fileCategory=Logistics http://localhost:8102/demo/files/upload
+curl -H "Content-Type: multipart/form-data" -X POST -F "file=@/c/Users/sasi12/Downloads/resume.pdf" -F fileCategory=Finance -F fileCategory=Contracts http://localhost:8102/demo/files/upload
+curl -H "Content-Type: multipart/form-data" -X POST -F "file=@/c/Users/sasi12/Downloads/test.jpg" -F fileCategory=Finance http://localhost:8102/demo/files/upload
+
+#Get All files
+curl -X GET http://localhost:8102/demo/files
+
+#Get files in specific category, say Finance
+curl -X GET http://localhost:8102/demo/files/Finance
+
+#Download specific file, Text file should work fine but if it's binary data, it will be messy on screen :), better open in Chrome or any other Browser
+curl -X GET http://localhost:8102/demo/files/test.jpg/download
+curl -X GET http://localhost:8102/demo/files/test.txt/download
+
+In Browser: http://localhost:8102/demo/files/test.jpg/download
+
+
+
+
